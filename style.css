@@ -1,0 +1,286 @@
+/* CSS Variables */
+:root {
+    --primary-color: #0a192f; /* Deep Navy */
+    --secondary-color: #112240; /* Lighter Navy */
+    --accent-color: #64ffda; /* Teal/Cyan Accent */
+    --text-primary: #ccd6f6; /* Light Gray */
+    --text-secondary: #8892b0; /* Slate Gray */
+    --bg-color: #0a192f;
+    --card-bg: #112240;
+    --white: #ffffff;
+    --transition: all 0.3s ease-in-out;
+    --sidebar-width: 280px;
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow: hidden; /* Prevent body scroll, handle in main */
+    height: 100vh;
+    display: flex;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--white);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; color: var(--accent-color); }
+h3 { font-size: 1.5rem; }
+
+p { margin-bottom: 1rem; color: var(--text-secondary); }
+
+a {
+    text-decoration: none;
+    color: var(--accent-color);
+    transition: var(--transition);
+}
+
+a:hover { color: var(--white); }
+
+ul { list-style: none; }
+
+/* Scrollbar Hiding */
+/* For Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* For IE, Edge and Firefox */
+.no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Layout */
+.app-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--secondary-color);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    flex-shrink: 0;
+}
+
+.profile-summary {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.profile-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: var(--accent-color); /* Placeholder color */
+    margin: 0 auto 1rem;
+    border: 3px solid var(--accent-color);
+    object-fit: cover;
+    background-image: url('../assets/profile_placeholder.png'); /* Fallback */
+    background-size: cover;
+}
+
+.profile-name {
+    font-size: 1.5rem;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+}
+
+.profile-title {
+    font-size: 0.9rem;
+    color: var(--accent-color);
+}
+
+.nav-menu {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    overflow-y: auto;
+}
+
+.nav-item {
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-item:hover, .nav-item.active {
+    background-color: rgba(100, 255, 218, 0.1);
+    color: var(--accent-color);
+}
+
+.nav-item i { width: 20px; text-align: center; }
+
+/* Main Content */
+.main-content {
+    flex-grow: 1;
+    padding: 3rem 4rem;
+    overflow-y: auto; /* Allow scrolling */
+    height: 100vh;
+    position: relative;
+}
+
+.section-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Components */
+.card {
+    background-color: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    transition: var(--transition);
+    border: 1px solid transparent;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+}
+
+.skill-tag {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin: 0.25rem;
+    background-color: rgba(100, 255, 218, 0.1);
+    color: var(--accent-color);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    border: 1px solid var(--accent-color);
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 2rem;
+    border-left: 2px solid var(--secondary-color);
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+    color: var(--accent-color);
+    font-weight: 500;
+    margin-top: 1rem;
+    cursor: pointer;
+    background: transparent;
+}
+
+.btn:hover {
+    background-color: rgba(100, 255, 218, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .app-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        padding: 1rem;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        position: fixed;
+        top: 0;
+        z-index: 100;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .profile-summary {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 0;
+        text-align: left;
+    }
+
+    .profile-img {
+        width: 40px;
+        height: 40px;
+        margin: 0;
+        border-width: 2px;
+    }
+    
+    .profile-name { font-size: 1rem; margin: 0; }
+    .profile-title { display: none; }
+
+    .nav-menu {
+        display: none; /* Hide menu on mobile initially, toggle with JS */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--secondary-color);
+        padding: 1rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .main-content {
+        padding: 6rem 1.5rem 2rem; /* Add top padding for fixed header */
+        height: auto;
+        overflow-y: visible;
+    }
+    
+    body {
+        overflow: auto; /* Allow body scroll on mobile */
+        display: block;
+        height: auto;
+    }
+}
