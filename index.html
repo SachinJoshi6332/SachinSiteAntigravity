@@ -48,9 +48,48 @@
 
         <!-- Main Content -->
         <main class="main-content no-scrollbar">
-            <div class="marquee__inner">
-                <span>• Site created by Sachin K. Joshi using Antigravity • </span>
-            </div>
+            <!-- Rolling marquee -->
+<div class="marquee">
+  <div class="marquee__inner">
+    <span>• Site created by Sachin K. Joshi using Antigravity •</span>
+    <span>• Site created by Sachin K. Joshi using Antigravity •</span>
+  </div>
+</div>
+
+<style>
+  .marquee {
+    overflow: hidden;
+    background: #111;       /* dark bar */
+    color: #fff;            /* white text */
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    font-size: 18px;
+    padding: 10px 0;
+    border-bottom: 1px solid #333;
+  }
+
+  .marquee__inner {
+    display: inline-flex;
+    white-space: nowrap;
+    animation: marquee 15s linear infinite;
+  }
+
+  .marquee__inner span {
+    padding-right: 2rem; /* space between repeats */
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(100%); }
+    to   { transform: translateX(-100%); }
+  }
+
+  /* Accessibility: respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .marquee__inner {
+      animation: none;
+      transform: none;
+    }
+  }
+</style>
 
             <div class="section-container">
                 <h2>About Sachin</h2>
@@ -85,6 +124,7 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
